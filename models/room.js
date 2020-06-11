@@ -38,8 +38,8 @@ const Room = mongose.model('Room', roomSchema)
 
 roomSchema.methods.addRoom = (room) => {
     console.log(room)
-    new Room(room).save(() => { 
-        console.log(room)
+    new Room(room).save((err) => { 
+        console.log(err)
     }) 
 }
 
