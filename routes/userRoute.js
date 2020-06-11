@@ -27,5 +27,6 @@ router.post('/logout',midi,uc.logoutUser.bind(uc))
 router.post('/createroom',midi,uc.createRoom.bind(uc))
 router.post('/joinroom/:id',midi,uc.joinRoom.bind(uc))
 router.post('/auth',midi, (req, res) => { res.send({status:"OK"})});
+//router.post('/leaveroom/:id',midi,uc.leaveRoom.bind(uc))
 
 module.exports = router

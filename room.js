@@ -1,7 +1,6 @@
 const dgram = require('dgram')
 const server = dgram.createSocket('udp4');
 
-const { fork } = require('child_process');
 
 Room = [];
 
@@ -20,6 +19,8 @@ process.on('message', (msg) => {
   }else if(msg.type == "on"){
     console.log("E LSHOJ KAMEREN ",msg.id);
     Room = Room.map((item) => { if(item.ID == msg.id){item.status="off" ;return  item } else{  return item } });
+  }else if(msg.type == "leave"){
+    Room = Room.filter((item) => {item.ID != msg.id });
   }
 });
 

@@ -23,6 +23,8 @@ process.on('message', (msg) => {
     console.log("Room State:", Room)
   }else if(msg.type == "on"){
     Room = Room.map((item) => { if(item.ID == msg.id){item.status="off" ;return  item } else{  return item } });
+  }else if(msg.type == "leave"){
+    Room = Room.filter((item) => {item.ID != msg.id });
   }
 });
 

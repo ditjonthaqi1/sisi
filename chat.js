@@ -35,6 +35,10 @@ server.on('connection',(socket) => {
                             audio.send({"type":"off","id": toUser.id});
                         }else if(toUser.cmd == "micon"){
                             audio.send({"type":"on","id": toUser.id});
+                        }else if(toUser.cmd == "leaveroom"){
+                            audio.send({"type":"leave","id": toUser.id});
+                            video.send({"type":"leave","id": toUser.id});
+                            socket.emit('close');
                         }
                     }
                     else socket.emit('error',new Error('INVALID_MSG_FORMAT'))
