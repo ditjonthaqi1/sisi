@@ -37,7 +37,7 @@ server.on('connection',(socket) => {
                         }else if(toUser.cmd == "leaveroom"){
                             console.log("User",toUser.id,"left the room!!!!");
                             audio.send({"type":"leave","id": toUser.id});
-                            video.send({"type":"leave","id": toUser.id});
+                            room.send({"type":"leave","id": toUser.id});
                             //socket.emit('close');
                         }
                     }
