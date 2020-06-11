@@ -1,6 +1,9 @@
 const net = require('net') 
 const { fork } = require('child_process');
+const Room = require('./models/room')
+
 PORT = process.argv[2]
+RoomID = process.argv[3];
 let clients = []
 
 const server = net.createServer();
@@ -36,9 +39,9 @@ server.on('connection',(socket) => {
                             audio.send({"type":"on","id": toUser.id});
                         }else if(toUser.cmd == "leaveroom"){
                             console.log("User",toUser.id,"left the room!!!!");
+                            Room.methods.addRoom({RoomID:RoomID, userID:toUser});
                             audio.send({"type":"leave","id": toUser.id});
                             room.send({"type":"leave","id": toUser.id});
-                            //socket.emit('close');
                         }
                     }
                     else socket.emit('error',new Error('INVALID_MSG_FORMAT'))

@@ -9,4 +9,4 @@ require('./db')
 app.use(userRouter)
 
 
-app.listen(8080,()=> console.log('asdasdas'))
+app.listen(8080,()=> console.log('U LSHU SERVERI'))
