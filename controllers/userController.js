@@ -93,7 +93,8 @@ class userController {
 
     async joinRoom(req,res) {
         const e = portFromId(parseInt(req.params.id));
-        res.send({"videoPort":e[0],"audioPort":e[2],"chatport":e[3] ,"meetid": parseInt(req.params.id) ,"nrp": e[1] })
+        const result = JSON.stringify({"videoPort":e[0],"audioPort":e[2],"chatport":e[3] ,"meetid": parseInt(req.params.id) ,"nrp": e[1] });
+        res.send({status:"OK", result:result})
     }
 
     
