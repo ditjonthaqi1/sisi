@@ -1,7 +1,6 @@
 const User = require('../models/user')
 const {hash} = require('bcrypt')
 const jwt = require("jsonwebtoken")
-const { fork } = require('child_process');
 
     
 
