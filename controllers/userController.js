@@ -86,7 +86,7 @@ class userController {
         ports.push(LAST_PORT)
         MeetPeople.push(1)
         fork("chat.js", [LAST_PORT+10]) 
-        res.send({status:"OK", result:{videoPort:LAST_PORT,audioPort:LAST_PORT+5 ,chatport:LAST_PORT+10 ,meetid:id, nrp:1}});
+        res.send({status:"OK", result:JSON.stringify({videoPort:LAST_PORT,audioPort:LAST_PORT+5 ,chatport:LAST_PORT+10 ,meetid:id, nrp:1})});
         console.log(ids, ports)
         LAST_PORT++
     }
