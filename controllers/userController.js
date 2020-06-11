@@ -4,7 +4,7 @@ const jwt = require("jsonwebtoken")
 const { fork } = require('child_process');
 
 //TODO Move Function to another file
-ChatChild
+
 
 const portFromId = (id) => {
     index = ids.indexOf(id)
@@ -86,7 +86,7 @@ class userController {
         ids.push(id)
         ports.push(LAST_PORT)
         MeetPeople.push(1)
-        const ChatChild = fork("chat.js", [LAST_PORT+10]) 
+        fork("chat.js", [LAST_PORT+10]) 
         res.send({status:"OK", result:JSON.stringify({videoPort:LAST_PORT,audioPort:LAST_PORT+5 ,chatport:LAST_PORT+10 ,meetid:id, nrp:1})});
         console.log(ids, ports)
         LAST_PORT++
