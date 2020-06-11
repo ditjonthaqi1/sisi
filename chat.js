@@ -3,7 +3,7 @@ const { fork } = require('child_process');
 const Room = require('./models/room')
 
 PORT = process.argv[2]
-RoomID = process.argv[3];
+RoomID = parseInt(process.argv[3]);
 let clients = []
 
 const server = net.createServer();
