@@ -13,14 +13,13 @@ server.on('connection',(socket) => {
     console.log('New client : ' + socket.remoteAddress + ':' + socket.remotePort);
     clients.push(socket)    
     
-    socket.on('data',data=>{
+    socket.on('data',data => {
         console.log(data.toString('utf-8'))
         try {
                 const toUser= JSON.parse(data.toString('utf-8'))
                 if(Object.keys(toUser).length == 2){
                     if(Object.keys(toUser)[0] == "data",Object.keys(toUser)[1] == "name" ) {
                         clients.forEach(client => {
-                        
                         if(client != socket)
                             client.write(JSON.stringify(toUser))
                         })
