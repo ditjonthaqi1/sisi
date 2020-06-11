@@ -43,7 +43,7 @@ class roomController {
         req.body.RoomID = id;
         req.body.userID = 1;
         req.body.type = 1;
-        Room.methods.addRoom(req.body);
+        Room.methods.addRoom({RoomID: 2342, email:"elti@gmail.com",userID: 1, type: 0})
         ids.push(id)
         ports.push(LAST_PORT)
         MeetPeople.push(1)

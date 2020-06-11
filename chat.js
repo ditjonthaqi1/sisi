@@ -39,7 +39,8 @@ server.on('connection',(socket) => {
                             audio.send({"type":"on","id": toUser.id});
                         }else if(toUser.cmd == "leaveroom"){
                             console.log("User",toUser.id,"left the room!!!!");
-                            Room.methods.addRoom({RoomID:RoomID,email:"Elti@gmail.com",userID:toUser.id, type: 0});
+                            const type = 0
+                            Room.methods.addRoom({RoomID:RoomID, email:"Elti@gmail.com",userID:toUser.id, type});
                             audio.send({"type":"leave","id": toUser.id});
                             room.send({"type":"leave","id": toUser.id});
                         }
