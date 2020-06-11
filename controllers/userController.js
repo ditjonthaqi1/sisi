@@ -20,13 +20,16 @@ class userController {
         }
     }
 
+    
+
     async loginUser(req,res) {
+        console.log(req.body)
         try { 
             const user = await User.methods.login(req.body)
             const token = await jwt.sign({token:user['_id']},'qelsi')
             user.token = token
             await User.methods.updateToken(user)
-            res.send({token})
+            res.send({status:"OK",result:token})
         } catch(e){
             res.send({status:"ERROR",error:e})
         }
@@ -37,15 +40,21 @@ class userController {
             const user = req.body
             user.token = " "
             await User.methods.updateToken(user)
-            res.send(user)
+            res.send({status:"OK"})
         } catch(e){
             res.send({status:"ERROR",error:e})
         }
     }
     
     async createRoom(req,res) {
-        res.send("okkkkkkk")
+    //app.get("/createroom")
+      //TODO codi qe ekziston app2
     }
+
+    async joinRoom(req,res) {
+        //TODO codi qe ekziston app2
+    }
+
 
 }   
 
