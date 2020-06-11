@@ -17,10 +17,15 @@ const midi = async (req,res,next) => {
     }
 }
 
+//Maybe TODO -> get(where tokeni is as header)//
+//createroom
+//Authenticate: token
+
 router.post('/register',uc.adduser.bind(uc))
 router.post('/login',uc.loginUser.bind(uc))
 router.post('/logout',midi,uc.logoutUser.bind(uc))
-router.post('/create',midi,uc.createRoom.bind(uc))
+router.post('/createroom',midi,uc.createRoom.bind(uc))
+router.post('/joinroom/:id"',midi,uc.joinRoom.bind(uc))
 router.post('/auth',midi, (req, res) => { res.send({status:"OK"})});
 
 module.exports = router
