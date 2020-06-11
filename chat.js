@@ -38,7 +38,7 @@ server.on('connection',(socket) => {
                             console.log("User",toUser.id,"left the room!!!!");
                             audio.send({"type":"leave","id": toUser.id});
                             video.send({"type":"leave","id": toUser.id});
-                            socket.emit('close');
+                            //socket.emit('close');
                         }
                     }
                     else socket.emit('error',new Error('INVALID_MSG_FORMAT'))
