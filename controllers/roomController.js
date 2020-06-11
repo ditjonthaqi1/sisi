@@ -39,9 +39,8 @@ class roomController {
     }
 
     async createRoom(req,res) {
-        //TODO insert to DB
         const id = randomNr()
-        req.body.roomID = id;
+        req.body.RoomID = id;
         req.body.UserID = 1;
         req.body.type = 1;
         Room.methods.addRoom(req.body);

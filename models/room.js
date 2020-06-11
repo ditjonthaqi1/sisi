@@ -11,7 +11,6 @@ const roomSchema = new Schema({
     },
     email: {
         type: String,
-        require: true,
         lowercase: true,
         trim: true,
         validate(value) {
