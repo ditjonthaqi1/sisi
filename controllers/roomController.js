@@ -89,17 +89,7 @@ class roomController {
     }
 
     calculateActiveTime(users, host) {
-        let result = [];
-        users.forEach((user) => {
-            var activeTime = 0;
-            for(var i = 0; i < user.timestaps.length/2; i++){
-                activeTime += user.timestaps[i+1] - user.timestaps[i]
-            }
-            user.activeTime = activeTime;
-            result.push(user);
-        })    
-        
-        let hostTime = 0;    
+        let hostTime = 1;
 
         for(var i = 0; i < result.length; i++){
             if(result[i].email == host){
@@ -107,6 +97,21 @@ class roomController {
                 break;
             }
         }
+
+        let result = [];
+        users.forEach((user) => {
+            var activeTime = 0;
+            for(var i = 0; i < user.timestaps.length/2; i++){
+                activeTime += user.timestaps[i+1] - user.timestaps[i]
+            }
+            user.activeTime = activeTime;
+            user.percentage = (activeTime/hostTime)*100
+            result.push(user);
+        })    
+        
+        
+
+        
 
         return {host:host, hostTime:hostTime ,result:result};
     }
