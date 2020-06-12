@@ -4,7 +4,13 @@ const {hash} = require('bcrypt')
 const app =  express()
 const path = require('path')
 
-const publicdict = path.join(__dirname)
+const viewpath = path.join(__dirname,"/views/")
+
+app.set('views',viewpath)
+
+
+
+console.log(publicdict)
 
 app.use(express.static(publicdict))
 app.use(express.json())
@@ -13,7 +19,7 @@ app.use(express.json())
 require('./db')
 const hbs = require('hbs')
 
-app.set('view engine', hbs)
+app.set('view engine', 'hbs')
 
 app.use(userRouter)
 
