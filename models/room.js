@@ -41,7 +41,20 @@ roomSchema.methods.addRoom = (room) => {
     console.log(room)
     new Room(room).save((err) => { 
         console.log(err)
-    }) 
+    })
+}
+
+roomSchema.methods.findUsersInRoom = (id) => {
+    return new Promise((resolve, reject) =>{
+        Room.find({RoomID:id}, (err, docs) => {
+            if(!err && docs.length != 0){
+                resolve(docs)
+            }else{
+                reject("ELTI")
+            }
+        })
+    })
+
 }
 
  module.exports = roomSchema;

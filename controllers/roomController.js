@@ -53,6 +53,34 @@ class roomController {
         LAST_PORT++
     }
 
+    async attendanceCal(req, res){
+        try{
+            let emails = [];
+            let timestaps = [];
+
+            const docs = await Room.methods.findUsersInRoom(req.params.id)
+            for(let i =0; i < docs.length; i++){
+                const index = emails.indexOf(docs[i].email);
+                if(index != -1){
+                    timestaps[index].push(doc[i].time);
+                }else{
+                    emails.push(docs[i].email);
+                    timestaps.push([docs[i].time]);
+                }
+            }
+            const result = [];
+            emails.forEach((item, i) =>{
+                result.push({email:item, timestaps:timestaps[i]})
+            });
+            console.log(result);
+
+            
+        } catch(e){
+            //TODO return error
+        }
+        
+    }
+
     async joinRoom(req,res) {
         
         const e = portFromId(parseInt(req.params.id));
