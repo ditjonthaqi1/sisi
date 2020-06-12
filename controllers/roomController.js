@@ -73,7 +73,7 @@ class roomController {
                 result.push({email:item, timestaps:timestaps[i].sort()})
             });
             console.log(result);
-            calculateActiveTime(result);
+            this.calculateActiveTime(result);
             
         } catch(e){
             console.log(e);
