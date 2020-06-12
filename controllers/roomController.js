@@ -98,7 +98,7 @@ class roomController {
         const roomID = req.params.id
         req.body.roomID = roomID;
         req.body.type = 0;
-        Rooms.methods.addRoom(req.body)
+        Room.methods.addRoom(req.body)
         res.send({status:"OK"})
 
     }
