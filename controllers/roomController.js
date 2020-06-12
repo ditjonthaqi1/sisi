@@ -79,8 +79,8 @@ class roomController {
                 result.push({email:item, timestaps:timestaps[i].sort()})
             });
 
-            const res = this.calculateActiveTime(result,HostEmail);
-            console.log(res);
+            const res2 = this.calculateActiveTime(result,HostEmail);
+            console.log(res2);
             res.render('attendance.hbs')
         } catch(e){
             res.send({status:"ERROR", error:e});
