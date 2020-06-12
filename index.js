@@ -10,9 +10,7 @@ app.set('views',viewpath)
 
 
 
-console.log(publicdict)
-
-app.use(express.static(publicdict))
+//app.use(express.static(publicdict))
 app.use(express.json())
 
 
