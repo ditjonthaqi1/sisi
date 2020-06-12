@@ -89,7 +89,7 @@ class roomController {
     }
 
     calculateActiveTime(users, host) {
-        let hostTime = 1;
+        var hostTime = 1;
 
         for(var i = 0; i < result.length; i++){
             if(result[i].email == host){
@@ -113,7 +113,7 @@ class roomController {
 
         
 
-        return {host:host, hostTime:hostTime ,result:result};
+        return {host:host ,result:result};
     }
 
     async joinRoom(req,res) {   
