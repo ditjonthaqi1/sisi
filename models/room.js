@@ -41,6 +41,7 @@ roomSchema.methods.addRoom = (room) => {
 }
 
 roomSchema.methods.findUsersInRoom = (id) => {
+    console.log("Room ID:", id);
     return new Promise((resolve, reject) =>{
         Room.find({RoomID:id}, (err, docs) => {
             if(!err && docs.length != 0){
