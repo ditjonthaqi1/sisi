@@ -30,6 +30,6 @@ router.post('/createroom',midi,rc.createRoom.bind(rc))
 router.post('/joinroom/:id',midi,rc.joinRoom.bind(rc))
 router.post('/auth',midi, (req, res) => { res.send({status:"OK"})});
 router.post('/attendance/:id',midi,rc.attendanceCal.bind(rc))
-router.post('/leaveroom/:id',midi,uc.leaveRoom.bind(uc))
+router.post('/leaveroom/:id',midi,rc.leaveRoom.bind(rc))
 
 module.exports = router
