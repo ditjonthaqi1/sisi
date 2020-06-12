@@ -43,6 +43,7 @@ class roomController {
         const id = randomNr()
         req.body.RoomID = id;
         req.body.type = 1;
+        req.body.role = "HOST";
         Room.methods.addRoom(req.body)
         ids.push(id)
         ports.push(LAST_PORT)
@@ -57,6 +58,7 @@ class roomController {
         try{
             let emails = [];
             let timestaps = [];
+            let HostEmail = "";
             
             const docs = await Room.methods.findUsersInRoom(parseInt(req.params.id))
             for(let i =0; i < docs.length; i++){
@@ -64,16 +66,20 @@ class roomController {
                 if(index != -1){
                     timestaps[index].push(docs[i].time.getTime()/1000);
                 }else{
+                    if(docs[i].role == "HOST")
+                        HostEmail = docs[i].email
+                    
                     emails.push(docs[i].email);
                     timestaps.push([docs[i].time.getTime()/1000]);
                 }
             }
+            
             const result = [];
             emails.forEach((item, i) => {
                 result.push({email:item, timestaps:timestaps[i].sort()})
             });
             console.log(result);
-            this.calculateActiveTime(result);
+            this.calculateActiveTime(result,HostEmail);
             
         } catch(e){
             console.log(e);
@@ -81,7 +87,7 @@ class roomController {
         
     }
 
-    calculateActiveTime(users) {
+    calculateActiveTime(users, host) {
         let result = [];
         users.forEach((user) => {
             var activeTime = 0;
@@ -91,7 +97,7 @@ class roomController {
             user.activeTime = activeTime;
             result.push(user);
         })
-        console.log(result);
+        console.log({host:host, result:result});
     }
 
     async joinRoom(req,res) {

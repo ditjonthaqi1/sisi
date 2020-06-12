@@ -19,6 +19,11 @@ const roomSchema = new Schema({
                 throw Error('EMAIL_INVALID')
         }
     },
+    role: {
+        type: String,
+        require: true,
+        default: "user"
+    },
     type: {
         type: Number,
         require:true
