@@ -81,7 +81,7 @@ class roomController {
 
             const res2 = this.calculateActiveTime(result,HostEmail);
             console.log(res2);
-            res.render('attendance.hbs')
+            res.render('attendance.hbs', {id:req.params.id, result: res2})
         } catch(e){
             res.send({status:"ERROR", error:e});
         }
