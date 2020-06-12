@@ -98,7 +98,9 @@ class roomController {
             user.activeTime = activeTime;
             result.push(user);
         })    
-        const hostTime = 0;    
+        
+        let hostTime = 0;    
+
         for(var i = 0; i < result.length; i++){
             if(result[i].email == host){
                 hostTime = result[i].activeTime;
