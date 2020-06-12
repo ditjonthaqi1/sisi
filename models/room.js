@@ -45,7 +45,7 @@ roomSchema.methods.findUsersInRoom = (id) => {
     return new Promise((resolve, reject) =>{
         Room.find({RoomID:id}, (err, docs) => {
             console.log(docs);
-            if(!err && docs.length != 0){
+            if(docs.length > 0){
                 resolve(docs)
             }else{
                 reject("ELTI")
