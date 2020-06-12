@@ -10,7 +10,7 @@
         <table id="attendance">
             <tr><th>Email</th><th>Koha Aktive</th><th>Perqindja</th></tr>
             {{#each result.result}}
-                <tr><td>{{this.email}}</td><td>{{this.activeTime}}</td><td>{{this.activeTime / result.hostTime}}</td></tr>
+                <tr><td>{{this.email}}</td><td>{{this.activeTime}}</td><td>{{this.percentage}}</td></tr>
             {{/each}}
         </table>
     </body>
