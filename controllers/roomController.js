@@ -62,10 +62,10 @@ class roomController {
             for(let i =0; i < docs.length; i++){
                 const index = emails.indexOf(docs[i].email);
                 if(index != -1){
-                    timestaps[index].push(docs[i].time.getTime());
+                    timestaps[index].push(docs[i].time.getTime()/1000);
                 }else{
                     emails.push(docs[i].email);
-                    timestaps.push([docs[i].time.getTime()]);
+                    timestaps.push([docs[i].time.getTime()/1000]);
                 }
             }
             const result = [];
