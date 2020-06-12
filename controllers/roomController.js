@@ -95,7 +95,7 @@ class roomController {
     }
 
     async leaveRoom(req, res) {
-        console.log(req.body)
+        console.log("KOSOVA REP")
         const roomID = req.params.id
         req.body.roomID = roomID;
         req.body.type = 0;
