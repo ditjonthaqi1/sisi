@@ -9,6 +9,10 @@
 
         <table id="attendance">
             <tr><th>Email</th><th>Koha Aktive</th><th>Perqindja</th></tr>
+            {{#each result.result}
+                <tr><td>{{this.email}}</td><td>{{this.activeTime}}</td><td>+{{this.activeTime}}</td></tr>
+            {{/each}}
+
         </table>
         <script>
             let users = {{result}}
@@ -32,3 +36,11 @@
 
     </body>
 </html>
+
+
+{
+    host:""
+    result:[
+        {email:"", active:""}
+    ]
+}
