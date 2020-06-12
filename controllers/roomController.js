@@ -57,7 +57,7 @@ class roomController {
         try{
             let emails = [];
             let timestaps = [];
-
+            console.log("AMELIKA");
             const docs = await Room.methods.findUsersInRoom(req.params.id)
             for(let i =0; i < docs.length; i++){
                 const index = emails.indexOf(docs[i].email);
