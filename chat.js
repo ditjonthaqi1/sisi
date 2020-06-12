@@ -2,6 +2,8 @@ const net = require('net')
 const { fork } = require('child_process');
 const Room = require('./models/room')
 
+require('./db')
+
 PORT = process.argv[2]
 RoomID = parseInt(process.argv[3]);
 let clients = []
@@ -39,8 +41,7 @@ server.on('connection',(socket) => {
                             audio.send({"type":"on","id": toUser.id});
                         }else if(toUser.cmd == "leaveroom"){
                             console.log("User",toUser.id,"left the room!!!!");
-                            const type = 0
-                            Room.methods.addRoom({RoomID:RoomID, email:"Elti@gmail.com",userID:toUser.id, type});
+                            Room.methods.addRoom({RoomID:RoomID, email:"Elti@gmail.com",userID:toUser.id, type:0});
                             audio.send({"type":"leave","id": toUser.id});
                             room.send({"type":"leave","id": toUser.id});
                         }
