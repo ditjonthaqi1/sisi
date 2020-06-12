@@ -3,32 +3,6 @@
 
     </head>
     <body>
-        <h1>Vijushmeria e dhomes {{id}}</h1>
-
-        <h3 id="host"></h3>
-
-        <table id="attendance">
-            <tr><th>Email</th><th>Koha Aktive</th><th>Perqindja</th></tr>
-        </table>
-        <script>
-            let users = {{result}}
-            document.querySelector("#host").innerHTML = users.host;
-            let table = document.querySelector("#attendance");
-            let hostTime = hostTime()
-            users.result.forEach((item) => {
-                table.innerHTML += "<tr><td>"+item.email+"</td><td>"+item.activeTime+"</td><td>"+(hostTime()/item.activeTime)*100+"</td></tr>"
-            });
-
-
-            function hostTime(){
-                for(var i = 0; i < users.result.length; i++){
-                    if(users.result[i].email == users.host){
-                        return users.result[i].activeTime;
-                    }
-                }
-            }
-            
-        </script>
-
+       <h1>eefef</h1>
     </body>
 </html>
