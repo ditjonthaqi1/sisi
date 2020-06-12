@@ -97,7 +97,7 @@ class roomController {
     async leaveRoom(req, res) {
         console.log("KOSOVA REP")
         const roomID = req.params.id
-        req.body.roomID = roomID;
+        req.body.RoomID = roomID;
         req.body.type = 0;
         Room.methods.addRoom(req.body)
         res.send({status:"OK"})
