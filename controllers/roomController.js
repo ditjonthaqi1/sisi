@@ -77,7 +77,7 @@ class roomController {
 
             
         } catch(e){
-            console.log("ERROR");
+            console.log(e);
         }
         
     }
