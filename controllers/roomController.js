@@ -104,7 +104,6 @@ class roomController {
         
         const e = portFromId(parseInt(req.params.id));
         req.body.roomID = req.params.id;
-        req.body.UserID = e[1];
         req.body.type = 1;
         Room.methods.addRoom(req.body);
         const result = JSON.stringify({videoPort:e[0],audioPort:e[2],chatport:e[3] ,meetid: parseInt(req.params.id) ,nrp: e[1] });
