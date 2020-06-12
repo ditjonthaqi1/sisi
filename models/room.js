@@ -19,10 +19,6 @@ const roomSchema = new Schema({
                 throw Error('EMAIL_INVALID')
         }
     },
-    userID: {
-        type: Number,
-        require:true
-    },
     type: {
         type: Number,
         require:true
@@ -54,8 +50,7 @@ roomSchema.methods.findUsersInRoom = (id) => {
             }
         })
     })
-
 }
 
- module.exports = roomSchema;
+module.exports = roomSchema;
 

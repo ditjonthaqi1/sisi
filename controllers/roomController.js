@@ -3,6 +3,7 @@ const { fork } = require('child_process');
 //TODO Move Function to another file
 
 
+
 const portFromId = (id) => {
     index = ids.indexOf(id)
     MeetPeople[index]++;
@@ -24,7 +25,7 @@ const portFromId = (id) => {
     return Math.floor(Math.random() * (max - min + 1)) + min;
   }
 
-  var ids = [];
+var ids = [];
 var ports = []; 
 var MeetPeople = [];
 
@@ -41,7 +42,6 @@ class roomController {
     async createRoom(req,res) {
         const id = randomNr()
         req.body.RoomID = id;
-        req.body.userID = 1;
         req.body.type = 1;
         Room.methods.addRoom(req.body)
         ids.push(id)
@@ -70,7 +70,8 @@ class roomController {
             }
             const result = [];
             emails.forEach((item, i) =>{
-                result.push({email:item, timestaps:timestaps[i]})
+                //[1,2,3,4]
+                result.push({email:item, timestaps:timestaps[i].sort()})
             });
             console.log(result);
 
@@ -91,6 +92,15 @@ class roomController {
         const result = JSON.stringify({videoPort:e[0],audioPort:e[2],chatport:e[3] ,meetid: parseInt(req.params.id) ,nrp: e[1] });
         res.send({status:"OK", result:result})
         
+    }
+
+    async leaveRoom(req, res) {
+        const roomID = req.params.id
+        req.body.roomID = roomID;
+        req.body.type = 0;
+        Rooms.methods.addRoom(req.body)
+        res.send({status:"OK"})
+
     }
 
 
