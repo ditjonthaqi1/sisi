@@ -5,6 +5,9 @@ const app =  express()
 app.use(express.json())
 
 require('./db')
+const hbs = require('hbs')
+
+app.set('view engine', hbs)
 
 app.use(userRouter)
 

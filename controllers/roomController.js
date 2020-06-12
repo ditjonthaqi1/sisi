@@ -78,11 +78,11 @@ class roomController {
             emails.forEach((item, i) => {
                 result.push({email:item, timestaps:timestaps[i].sort()})
             });
-            console.log(result);
-            this.calculateActiveTime(result,HostEmail);
-            
+
+            const res = this.calculateActiveTime(result,HostEmail);
+            res.render('../views/attendance',{id:req.params.id,res:res})
         } catch(e){
-            console.log(e);
+            res.send({status:"ERROR", error:e});
         }
         
     }
@@ -97,11 +97,10 @@ class roomController {
             user.activeTime = activeTime;
             result.push(user);
         })
-        console.log({host:host, result:result});
+        return {host:host, result:result};
     }
 
-    async joinRoom(req,res) {
-        
+    async joinRoom(req,res) {   
         const e = portFromId(parseInt(req.params.id));
         req.body.RoomID = req.params.id;
         req.body.type = 1;
