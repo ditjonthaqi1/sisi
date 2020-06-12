@@ -97,8 +97,16 @@ class roomController {
             }
             user.activeTime = activeTime;
             result.push(user);
-        })
-        return {host:host, result:result};
+        })    
+        const hostTime = 0;    
+        for(var i = 0; i < users.result.length; i++){
+            if(users.result[i].email == users.host){
+                hostTime = users.result[i].activeTime;
+                break;
+            }
+        }
+
+        return {host:host, hostTime:hostTime ,result:result};
     }
 
     async joinRoom(req,res) {   
