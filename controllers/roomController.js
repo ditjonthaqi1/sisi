@@ -89,14 +89,7 @@ class roomController {
     }
 
     calculateActiveTime(users, host) {
-        var hostTime = 1;
-
-        for(var i = 0; i < result.length; i++){
-            if(result[i].email == host){
-                hostTime = result[i].activeTime;
-                break;
-            }
-        }
+        
 
         let result = [];
         users.forEach((user) => {
@@ -109,7 +102,17 @@ class roomController {
             result.push(user);
         })    
         
-        
+        var hostTime = 1;
+
+        for(var i = 0; i < result.length; i++){
+            if(result[i].email == host){
+                hostTime = result[i].activeTime;
+                break;
+            }
+        }
+
+
+        result = result.map((item) => {item.percentage = (item.activeTime/hostTime)*100; return item})
 
         
 
