@@ -69,17 +69,29 @@ class roomController {
                 }
             }
             const result = [];
-            emails.forEach((item, i) =>{
-                //[1,2,3,4]
+            emails.forEach((item, i) => {
                 result.push({email:item, timestaps:timestaps[i].sort()})
             });
             console.log(result);
-
+            calculateActiveTime(result);
             
         } catch(e){
             console.log(e);
         }
         
+    }
+
+    calculateActiveTime(users) {
+        let result = [];
+        users.forEach((user) => {
+            var activeTime = 0;
+            for(var i = 0; i < user.timestaps.length/2; i++){
+                activeTime += user.timestaps[i+1] - user.timestaps[i]
+            }
+            user.activeTime = activeTime;
+            result.push(user);
+        })
+        console.log(result);
     }
 
     async joinRoom(req,res) {
