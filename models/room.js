@@ -23,10 +23,8 @@ const roomSchema = new Schema({
         type: Number,
         require:true
     },
-    time: {
-        type: Number,
-        default: Math.floor(Date.now()/60000)
-    }
+    time: { type : Date, default: Date.now }
+
 })
 
 
