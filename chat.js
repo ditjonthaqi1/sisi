@@ -10,12 +10,12 @@ let clients = []
 
 const server = net.createServer();
 
-const audio = fork("audio.js", [PORT-5])
-const room = fork("room.js", [PORT-10])
+const audio = fork("audio.js", [PORT+1000])
+const room = fork("room.js", [PORT+1100])
 
 
 const midi = async (email, token) => {
-    console.log(token);
+    //console.log(token);
     try {
         if(token){
             await User.methods.auth({email:email,token:token})
