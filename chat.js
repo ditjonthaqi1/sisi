@@ -39,9 +39,8 @@ server.on('connection', (socket) => {
                 if(!allGood){
                     return;
                 }
-                if(Object.keys(toUser).length == 3){
-                    if(Object.keys(toUser)[0] == "data" && Object.keys(toUser)[1] == "name") {
-                        
+            
+                if(Object.keys(toUser)[0] == "data" && Object.keys(toUser)[1] == "name") {         
                         clients.forEach(client => {
                         if(client != socket)
                             client.write(JSON.stringify({data:toUser.data, name: toUser.name}))
@@ -65,8 +64,6 @@ server.on('connection', (socket) => {
                         }
                     }
                     else socket.emit('error',new Error('INVALID_MSG_FORMAT'))
-                }
-                else socket.emit('error',new Error('INVALID_MSG_FORMAT'))
                
         }catch(e){
                 socket.emit('error',e)      
