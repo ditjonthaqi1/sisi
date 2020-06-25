@@ -7,7 +7,7 @@
 
         <h3 id="host">Host: {{result.host}}</h3>
 
-        <table id="attendance">
+        <table border="1" id="attendance">
             <tr><th>Email</th><th>Koha Aktive</th><th>Perqindja</th></tr>
             {{#each result.result}}
                 <tr><td>{{this.email}}</td><td>{{this.activeTime}}</td><td>{{this.percentage}}</td></tr>
