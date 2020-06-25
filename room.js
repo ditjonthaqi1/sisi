@@ -32,7 +32,7 @@ server.on('error', (err) => {
   });
 
   server.on('message', (msg, rinfo) => {
-    //console.log(msg.toString("utf-8"))
+    console.log(msg.toString("utf-8"))
     
         const userid = msg[0];
         const cmd = msg[1];
