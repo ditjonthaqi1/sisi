@@ -44,7 +44,7 @@ server.on('connection',async (socket) => {
                         
                         clients.forEach(client => {
                         if(client != socket)
-                            client.write(JSON.stringify(toUser))
+                            client.write(JSON.stringify({data:toUser.data, name: toUser.name}))
                         })
                     }else if(Object.keys(toUser)[0] == "cmd"){
 
