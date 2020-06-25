@@ -1,6 +1,6 @@
 const net = require('net') 
 const { fork } = require('child_process');
-const Room = require('./models/room')
+const User = require('./models/user')
 
 require('./db')
 
@@ -13,7 +13,20 @@ const server = net.createServer();
 const audio = fork("audio.js", [PORT-5])
 const room = fork("room.js", [PORT-10])
 
-server.on('connection',(socket) => {
+
+const midi = async (email, token) => {
+    console.log(token);
+    try {
+        if(token){
+            await User.methods.auth({email:email,token:token})
+            return true;
+        }
+    } catch(e) {
+        return false;
+    }
+}
+
+server.on('connection',async (socket) => {
    
     console.log('New client : ' + socket.remoteAddress + ':' + socket.remotePort);
     clients.push(socket)    
@@ -22,8 +35,13 @@ server.on('connection',(socket) => {
         console.log(data.toString('utf-8'))
         try {
                 const toUser= JSON.parse(data.toString('utf-8'))
-                if(Object.keys(toUser).length == 2){
-                    if(Object.keys(toUser)[0] == "data",Object.keys(toUser)[1] == "name" ) {
+                const allGood = await midi(toUser.name, toUser.token);
+                if(!allGood){
+                    return;
+                }
+                if(Object.keys(toUser).length == 3){
+                    if(Object.keys(toUser)[0] == "data" && Object.keys(toUser)[1] == "name") {
+                        
                         clients.forEach(client => {
                         if(client != socket)
                             client.write(JSON.stringify(toUser))
