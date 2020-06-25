@@ -4,7 +4,7 @@ const User = require('./models/user')
 
 require('./db')
 
-PORT = process.argv[2]
+PORT =  parseInt(process.argv[2]);
 RoomID = parseInt(process.argv[3]);
 let clients = []
 
