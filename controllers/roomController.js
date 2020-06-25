@@ -7,7 +7,7 @@ const { fork } = require('child_process');
 const portFromId = (id) => {
     index = ids.indexOf(id)
     MeetPeople[index]++;
-    return [ports[index],MeetPeople[index],ports[index]+5,ports[index]+10]
+    return [ports[index]+1100,MeetPeople[index],ports[index]+1000,ports[index]]
   }
   
   const roomId = () => {
