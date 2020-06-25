@@ -48,7 +48,6 @@ server.on('connection', (socket) => {
                     }else if(Object.keys(toUser)[0] == "cmd"){
 
                         if(toUser.cmd == "camoff"){
-                            console.log("TEST TEST TEST");
                             room.send({"type":"off","id": toUser.id});
                         }else if(toUser.cmd == "camon"){
                             console.log("KOSOVO REP" );
