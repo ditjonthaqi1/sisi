@@ -9,7 +9,7 @@ PORT = process.argv[2]
 
 
 
-console.log("VIDEO START")
+console.log("VIDEO START", PORT)
 
 process.on('message', (msg) => {
   if(msg.type == "off"){
