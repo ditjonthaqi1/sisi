@@ -14,6 +14,7 @@ console.log("VIDEO START", PORT)
 process.on('message', (msg) => {
   if(msg.type == "off"){
     Room = Room.map((item) => { if(item.ID == msg.id){ item.status="off" ;return  item } else{  return item } });
+    console.log("E NALI KAMEEREN QIKY");
     sendCamOff(msg.id);
     console.log("Room State:", Room)
   }else if(msg.type == "on"){
