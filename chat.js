@@ -26,12 +26,12 @@ const midi = async (email, token) => {
     }
 }
 
-server.on('connection',async (socket) => {
+server.on('connection', (socket) => {
    
     console.log('New client : ' + socket.remoteAddress + ':' + socket.remotePort);
     clients.push(socket)    
     
-    socket.on('data',data => {
+    socket.on('data',async (data) => {
         console.log(data.toString('utf-8'))
         try {
                 const toUser= JSON.parse(data.toString('utf-8'))
