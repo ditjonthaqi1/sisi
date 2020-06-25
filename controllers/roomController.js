@@ -48,8 +48,8 @@ class roomController {
         ids.push(id)
         ports.push(LAST_PORT)
         MeetPeople.push(1)
-        fork("chat.js", [LAST_PORT+10, id]) 
-        res.send({status:"OK", result:JSON.stringify({videoPort:LAST_PORT,audioPort:LAST_PORT+5 ,chatport:LAST_PORT+10 ,meetid:id, nrp:1})});
+        fork("chat.js", [LAST_PORT, id]) 
+        res.send({status:"OK", result:JSON.stringify({videoPort:LAST_PORT+1100,audioPort:LAST_PORT+1000 ,chatport:LAST_PORT ,meetid:id, nrp:1})});
         console.log(ids, ports)
         LAST_PORT++
     }
